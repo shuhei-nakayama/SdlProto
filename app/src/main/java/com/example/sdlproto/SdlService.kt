@@ -81,9 +81,6 @@ class SdlService : Service(), TextToSpeech.OnInitListener {
 
     private fun connectForeground() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            APP_ID = resources.getString(R.string.app_id)
-            APP_NAME = resources.getString(R.string.app_name)
-
             // TODO とりあえず、manticore必須
             val manticorePort = BuildConfig.MANTICORE_PORT
             MANTICORE_IP_ADDRESS = BuildConfig.MANTICORE_IP_ADDR
@@ -1123,9 +1120,10 @@ class SdlService : Service(), TextToSpeech.OnInitListener {
 
     companion object {
 
-        private var APP_ID = "0"  // set your own APP_ID
+        private var APP_ID = "8678309"  // set your own APP_ID
+        private var APP_NAME: String = "Hello Sdl";
+
         private var USE_MANTICORE: Boolean = true
-        private var APP_NAME: String? = null
         private var MANTICORE_TCP_PORT = 0
         private var MANTICORE_IP_ADDRESS: String? = null
         private lateinit var NOTIFICATION_CHANNEL_ID: String

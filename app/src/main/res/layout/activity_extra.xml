@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".ExtraActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_layout_tts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Input text to speech.">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_input_tts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/spinner_voice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ms_background_color="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_layout_tts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint=""/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_speech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        android:padding="8dp"
+        android:text="speech"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_voice"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.smartdevicelink.transport.TransportConstants
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var vehicleLight: ImageView? = null
@@ -26,14 +27,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             return
         }
-        vehicleLight = findViewById(R.id.vehicle_light)
-        vehicleLight!!.imageAlpha = 0
 
         _initPreference()
 
-        findViewById<View>(R.id.btn_connect).setOnClickListener(this)
-        findViewById<View>(R.id.btn_settings).setOnClickListener(this)
-        findViewById<View>(R.id.btn_info).setOnClickListener(this)
+        btn_connect.setOnClickListener(this)
+        btn_settings.setOnClickListener(this)
+        btn_info.setOnClickListener(this)
+        btn_extra.setOnClickListener(this)
 
         // SdlServiceからのレスポンスを取得
         receiver = UpdateReceiver()
@@ -92,6 +92,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val i = Intent(this, SettingsActivity::class.java)
                 startActivity(i)
             }
+            R.id.btn_info -> {
+                val i = Intent(this, InformationActivity::class.java)
+                startActivity(i)
+            }
+            R.id.btn_extra -> {
+                val i = Intent(this, ExtraActivity::class.java)
+                startActivity(i)
+            }
             else -> {
             }
         }
@@ -127,7 +135,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 // startForegroundService()を呼び出し、起動されたサービスは、
                 // 5秒以内にService.startForeground()を呼び出さないとRemoteServiceExceptionが発生します。
                 startForegroundService(proxyIntent)
-                vehicleLight!!.imageAlpha = 150
             } else {
                 // minSdkVersion < 26
                 Toast.makeText(this, "ご利用中の端末は対象外となっております。", Toast.LENGTH_SHORT).show()
